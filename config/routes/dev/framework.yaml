@@ -1,3 +1,3 @@
 _errors:
-    resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
+    resource: '/home/ahmedfouad/self-learning/symfony-4-web-development-from-beginner-to-advanced/config/routes/errors.xml'
     prefix: /_error
