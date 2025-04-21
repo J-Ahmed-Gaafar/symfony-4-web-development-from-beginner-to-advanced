@@ -18,14 +18,14 @@
     </ul>
     <ul>
         {% for user in users %}
-            <li>{{ user }}</li>
+            <li>{{ user.name }}</li>
         {% endfor %}
     </ul>
 </div>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        alert(1)
-    </script>
-{% endblock %}
+{#{% block javascripts %}#}
+{#    <script>#}
+{#        alert(1)#}
+{#    </script>#}
+{#{% endblock %}#}
