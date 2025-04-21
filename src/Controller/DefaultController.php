@@ -11,10 +11,10 @@ use App\Entity\User;
 class DefaultController extends AbstractController
 {
 
-    public function __construct(GiftsService $gifts)
-    {
-        $this->gifts = ['a', 'b', 'c', 'd'];
-    }
+//    public function __construct(GiftsService $gifts)
+//    {
+//        $this->gifts = ['a', 'b', 'c', 'd'];
+//    }
 
     /**
      * @Route("/", name="default")
