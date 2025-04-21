@@ -13,6 +13,13 @@ class DefaultController extends AbstractController
      */
     public function index($name)
     {
+        $users = ['Adam', 'Robert', 'John', 'Susan'];
+
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+            'users' => $users,
+        ]);
+
 //        return $this->render('default/index.html.twig', [
 //            'controller_name' => 'DefaultController',
 //        ]);
@@ -25,7 +32,7 @@ class DefaultController extends AbstractController
 
 //        return $this->redirect('http://symfony.com');
 
-        return $this->redirectToRoute('default2');
+//        return $this->redirectToRoute('default2');
     }
 
     /**

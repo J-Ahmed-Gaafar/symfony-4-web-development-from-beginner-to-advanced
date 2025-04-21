@@ -1,3 +1,32 @@
+
+
+<?php
+// src/Controller/DefaultController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class DefaultController extends AbstractController
+{
+    /**
+     * @Route("/default", name="default")
+     */
+    public function index()
+    {
+        $users = ['Adam', 'Robert', 'John', 'Susan'];
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+            'users' => $users,
+        ]);
+    }
+}
+
+
+--------------------------------------------------------------
+
+
+{# templates/default/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello {{ controller_name }}!{% endblock %}
@@ -17,15 +46,10 @@
         <li>Your template at <code><a href="{{ 'templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
     </ul>
     <ul>
-        {% for user in users %}
-            <li>{{ user }}</li>
-        {% endfor %}
+    {% for user in users %}
+    <li>{{user}}</li>
+    {% endfor %}
     </ul>
 </div>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        alert(1)
-    </script>
-{% endblock %}
