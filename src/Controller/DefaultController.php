@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Services\GiftsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 
@@ -20,21 +22,32 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="default")
      */
-    public function index(GiftsService  $gifts)
+    public function index(GiftsService  $gifts, Request $request, SessionInterface $session): Response
     {
 //        $users = ['Adam', 'Robert', 'John', 'Susan'];
 
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
-        $this->addFlash(
-            'notice',
-            'Your changes were saved!'
-        );
+//        exit($request->cookies->get('PHPSESSID'));
+        $session->set('name', 'session value');
 
-        $this->addFlash(
-            'warning',
-            'Your changes were saved!'
-        );
+//        $session->remove('name');
+//        $session->clear();
+
+        if ($session->has('name'))
+        {
+            exit($session->get('name'));
+        }
+
+//        $this->addFlash(
+//            'notice',
+//            'Your changes were saved!'
+//        );
+//
+//        $this->addFlash(
+//            'warning',
+//            'Your changes were saved!'
+//        );
 
 //        $cookie = new Cookie(
 //            'my_cookie', // cookie name
@@ -46,9 +59,9 @@ class DefaultController extends AbstractController
 //        $res->headers->setCookie($cookie);
 //        $res->send();
 
-        $res = new Response();
-        $res->headers->clearCookie('my_cookie');
-        $res->send();
+//        $res = new Response();
+//        $res->headers->clearCookie('my_cookie');
+//        $res->send();
 
 //        $gifts = ['flowers', 'car', 'piano', 'money'];
 //        shuffle($gifts);
