@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Services\GiftsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
@@ -34,6 +35,20 @@ class DefaultController extends AbstractController
             'warning',
             'Your changes were saved!'
         );
+
+//        $cookie = new Cookie(
+//            'my_cookie', // cookie name
+//            'cookie_value', // cookie value
+//            time() + (2 * 365 * 24 * 60 * 60) // Expires after 2 years
+//        );
+//
+//        $res = new Response();
+//        $res->headers->setCookie($cookie);
+//        $res->send();
+
+        $res = new Response();
+        $res->headers->clearCookie('my_cookie');
+        $res->send();
 
 //        $gifts = ['flowers', 'car', 'piano', 'money'];
 //        shuffle($gifts);
