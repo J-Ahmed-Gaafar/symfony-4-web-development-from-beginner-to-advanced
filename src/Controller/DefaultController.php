@@ -25,6 +25,16 @@ class DefaultController extends AbstractController
 
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
+        $this->addFlash(
+            'notice',
+            'Your changes were saved!'
+        );
+
+        $this->addFlash(
+            'warning',
+            'Your changes were saved!'
+        );
+
 //        $gifts = ['flowers', 'car', 'piano', 'money'];
 //        shuffle($gifts);
 
